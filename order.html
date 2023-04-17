@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的订单</title>
+    <link rel="stylesheet" type="text/css" href="./css/order.css" />
+    <script src="./js/rem.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/vue@2.7.14.js"></script>
+    <script src="./js/axios.min.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="tabs" v-cloak>
+            <div class="tab-header">
+                <div class="tag" :class="{active: type === currentIndex}" v-for="({name, type}, index) in tabs" :key="name" @click="handleTabChange(type)">{{ name }}</div>
+            </div>
+            <div class="filter">
+                <div class="bar" @click="showFilter = !showFilter">{{ currentYear }}年 <img src="./images/down.png" alt="展开"></div>
+                <ul class="drop" v-if="showFilter">
+                    <li v-for="(item, index) in years" :key="index" @click="handleFilter(item)">{{ item }}</li>
+                </ul>
+            </div>
+            
+            <div class="content" v-for="(item, index) in tabs" :key="item"  v-if="item.type === currentIndex">
+                <template v-if="orderList.length">
+                    <div class="orders"
+                        @click="handleGoDetail(saleSoId)"
+                        v-for="({ saleName, deptName, checkoutDt, saleRealAmt, saleSoId, statusFlg, qty }) in orderList"
+                        :key="item.saleSoId"
+                    >
+                        <div class="order-header">
+                            <div class="title">
+                                <h2 class="sub"><p>{{ saleName }}单</p>{{ deptName }}</h2>
+                                <p class="link">{{ statusFlg }}</p>
+                            </div>
+                        </div>
+                        <div class="order-detail">
+                            <img class="img" src="./images/order.jpg" alt="">
+                            <div class="order-detail-info">
+                                <h5>单号：{{ saleSoId }}</h5>
+                                <h5>您本次订单共计<span>{{ qty }}</span>份商品</h5>
+                                <p>{{ checkoutDt }}</p>
+                            </div>
+                        </div>
+                        <div class="order-total">合计：¥<span>{{ saleRealAmt }}</span></div>
+                        <div class="order-btn"><button>详情</button></div>
+                    </div>
+                </template>
+               
+                <div class="empty" v-else>
+                    暂无数据～
+                </div>
+            </div>
+        </div>
+        <!-- {{ message }} -->
+    </div>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/order.js"></script>
+</body>
+</html>

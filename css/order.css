@@ -1,0 +1,148 @@
+@import './reset.css';
+.tabs {
+    width: 10rem;
+    padding-bottom: 0.4rem;
+}
+/* tab头部 */
+.tab-header {
+    display: flex;
+    justify-content: space-between;
+    height: 1.33rem;
+    overflow: hidden;
+}
+.tag {
+    flex: 1;
+    white-space: nowrap;
+    font-size: 0.4rem;
+    padding-top: 0.4rem;
+    text-align: center;
+    color: #838383;
+}
+.tag.active {
+    color: #444444;
+    font-size: 0.42rem;
+    font-weight: 500;
+}
+.filter, .content {
+    padding: 0 0.4rem;
+}
+.filter {
+    font-size: 0.38rem;
+    color: #404040;
+    position: relative;
+}
+.filter img {
+    height: 0.3rem;
+}
+.filter .drop {
+    position: absolute;
+    background-color: #fff;
+    left: 0.4rem;
+    top: 0.6rem;
+    padding: 0.4rem 0.4rem 0;
+    border-radius: 0.13rem;
+    z-index: 10;
+    border: 0.026rem solid #fafafa;
+    box-shadow: 0 0 10px #eee;
+}
+.filter .drop li {
+    line-height: 1rem;
+}
+.filter .drop li + li {
+    border-top: 0.013rem solid #fafafa;
+}
+.content {
+    padding-top: 0.04rem;
+}
+.orders {
+    background-color: #ffffff;
+    border-radius: 0.266rem;
+    padding: 0.4rem;
+    font-size: 0.4rem;
+    margin-top: 0.266rem;
+}
+.order-header .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.order-header .sub {
+    display: flex;
+    font-size: 0.46rem;
+    font-weight: normal;
+    align-items: flex-end;
+}
+.order-header .sub p {
+    font-size: 0.4rem;
+    font-weight: normal;
+    padding-right: 0.133rem;
+    position: relative;
+    margin-bottom: 0.08rem;
+    color: #7762a5;
+}
+
+.order-header .title .link {
+    color: #9a9a9a;
+    font-size: 0.4rem;
+}
+.order-detail {
+    padding: 0.26rem 0.4rem;
+    display: flex;
+}
+.order-detail .img {
+    width: 1.33rem;
+    height: 1.33rem;
+    background-color: #f3dadc;
+}
+.order-detail-info {
+    font-size: 0.4rem;
+    padding-left: 0.26rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.order-detail-info h5 {
+    font-size: 0.4rem;
+    font-weight: normal;
+    color: #727272;
+}
+.order-detail-info h5 + h5 {
+    padding-top: 0.133rem;
+    color: #a1a1a1;
+}
+.order-detail-info span {
+    color: #c0463e;
+    font-weight: 600;
+}
+.order-detail-info p {
+    color: #a1a1a1;
+    line-height: 1;
+    padding-top: 0.266rem;
+    font-size: 0.4rem;
+}
+.order-total {
+    text-align: right;
+    color: #555555;
+}
+.order-total span {
+    color: #343434;
+    font-size: 0.42rem;
+}
+.order-btn {
+    text-align: right;
+    padding-top: 0.4rem;
+}
+.order-btn button {
+    background-color: transparent;
+    border: 0.026rem solid #e2e2e2;
+    padding: 0.14rem 0.72rem;
+    border-radius: 0.8rem;
+    color: #7f7f7f;
+    font-size: 0.38rem;
+}
+.empty {
+    padding: 3rem 0 0;
+    text-align: center;
+    color: #9a9a9a;
+    font-size: 0.36rem;
+}
