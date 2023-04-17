@@ -22,6 +22,20 @@ var app = new Vue({
             JsBarcode("#barcode", this.salesoId, {displayValue: false});
             // 生成二维码
             new QRCode(document.getElementById("qrcode"),  this.orderDetail.fullELC);
+            wx.miniProgram.getEnv((res) => {
+                if (res.miniprogram) {
+                    wx.checkJsApi({
+                        jsApiList: ['scanQRCode', 'previewImage'],
+                        success: function (res) {
+                            console.log('******')
+                        }
+                    });
+                    wx.previewImage({
+                            current: this.orderDetail.fullELC, // 当前显示图片的http链接
+                            urls: [this.orderDetail.fullELC] // 需要预览的图片http链接列表
+                    });
+                }
+            });
         },
         goMiniProgram() {
             wx.miniProgram.reLaunch({
