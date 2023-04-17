@@ -23,20 +23,27 @@ var app = new Vue({
             console.log(source)
             // 生成二维码
             new QRCode(document.getElementById("qrcode"),  this.orderDetail.fullELC);
-            wx.miniProgram.getEnv((res) => {
-                if (res.miniprogram) {
-                    wx.checkJsApi({
-                        jsApiList: ['scanQRCode', 'previewImage'],
-                        success: function (res) {
-                            console.log('******')
-                        }
-                    });
-                    wx.previewImage({
-                            current: this.orderDetail.fullELC, // 当前显示图片的http链接
-                            urls: [this.orderDetail.fullELC] // 需要预览的图片http链接列表
-                    });
-                }
-            });
+            const qrCode = document.querySelector("#qrcode")
+            const img = qrCode.querySelector("img")
+            let imgSrc = ""
+            img.onload=()=>{//注意这里一定要在img.onload()中取src，否则取到为null
+                imgSrc = qrCode.querySelector("img").src
+                wx.miniProgram.getEnv((res) => {
+                    if (res.miniprogram) {
+                        wx.checkJsApi({
+                            jsApiList: ['scanQRCode', 'previewImage'],
+                            success: function (res) {
+                                console.log('******')
+                            }
+                        });
+                        wx.previewImage({
+                                current: imgSrc, // 当前显示图片的http链接
+                                urls: [imgSrc] // 需要预览的图片http链接列表
+                        });
+                    }
+                });
+            }
+            
         },
         goReceipt() {
             window.location.href = this.orderDetail.fullELC
