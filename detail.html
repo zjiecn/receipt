@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>小票详情</title>
+    <link rel="stylesheet" type="text/css" href="./css/detail.css" />
+    <script src="./js/rem.js"></script>
+    <script src="./js/config.js"></script>
+    <script src="./js/JsBarcode.all.min.js"></script>
+    <script src="./js/qrcode.min.js"></script>
+    <script src="./js/vue@2.7.14.js"></script>
+    <script src="./js/axios.min.js"></script>
+    <script src="./js/jweixin-1.6.0.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div class="detail" v-cloak>
+           <div class="header">
+                <img class="logo" src="./images/logo.png" alt="元祖食品">
+                <h1 class="title">{{ orderDetail.deptName }}</h1>
+                <img class="bar-code" id="barcode"/>
+           </div>
+           <ul class="info">
+            <li>
+                <h6>单号</h6>
+                <p>{{ orderDetail.saleSoId }}</p>
+            </li>
+            <li>
+                <h6>时间</h6>
+                <p>{{ orderDetail.checkoutDt }}</p>
+            </li>
+            <li>
+                <h6>收银员</h6>
+                <p>{{ orderDetail.staffName }}</p>
+            </li>
+           </ul>
+           <ul class="goods">
+            <li v-for="({ itemName, itemPrice, itemQty,itemAmt }, index) in orderDetail.itemLineDatas" :key="index">
+                <div class="title">{{ itemName }}</div>
+                <div class="goods-detail">
+                    <span>{{ itemPrice }}*{{ itemQty }}</span>
+                    <span>{{ itemAmt }}</span>
+                </div>
+            </li>
+            <!-- <li>
+                <div class="title">圆梦巴士礼盒</div>
+                <div class="goods-detail">
+                    <span>218.00*1.00</span>
+                    <span>218.00</span>
+                </div>
+            </li>
+            <li>
+                <div class="title">6号蝶恋花景鲜奶蛋糕</div>
+                <div class="goods-detail">
+                    <span>218.00*1.00</span>
+                    <span>218.00</span>
+                </div>
+            </li> -->
+           </ul>
+           <ul class="info">
+            <li>
+                <h6>应收金额</h6>
+                <p>{{ orderDetail.subtotalAmt }}</p>
+            </li>
+            <li>
+                <h6>实收金额</h6>
+                <p>{{ orderDetail.totalAmt }}</p>
+            </li>
+            <!-- <li>
+                <h6 class="special">找零</h6>
+                <p>2.00</p>
+            </li> -->
+           </ul>
+           <!-- <ul class="goods">
+            <li>
+                <div class="title">6号蝶恋花景鲜奶蛋糕</div>
+                <div class="goods-detail">
+                    <span>218.00*1.00</span>
+                    <span>218.00</span>
+                </div>
+            </li>
+            <li>
+                <div class="title">圆梦巴士礼盒</div>
+                <div class="goods-detail">
+                    <span>218.00*1.00</span>
+                    <span>218.00</span>
+                </div>
+            </li>
+            <li>
+                <div class="title">6号蝶恋花景鲜奶蛋糕</div>
+                <div class="goods-detail">
+                    <span>218.00*1.00</span>
+                    <span>218.00</span>
+                </div>
+            </li>
+           </ul> -->
+           <ul class="info">
+            <li v-for="({ payName, payAmt }, index) in orderDetail.payLineDatas" :key="index">
+                <h6>{{ payName }}</h6>
+                <p>{{ payAmt }}</p>
+            </li>
+           </ul>
+           <ul class="info">
+                <li>
+                    <h6>数量合计</h6>
+                    <p>{{ orderDetail.sumQty }}</p>
+                </li>
+                <li>
+                    <h6>优惠金额</h6>
+                    <p>{{ orderDetail.disCountAmt }}</p>
+                </li>
+           </ul>
+           <ul class="info">
+                <li>
+                    <h6>配送方式</h6>
+                    <p>{{ rsvpLineDatas.deliType }}</p>
+                </li>
+                <li>
+                    <h6>配送时间</h6>
+                    <p>{{ rsvpLineDatas.expectedDt }}</p>
+                </li>
+                <li>
+                    <h6>收货人姓名</h6>
+                    <p>{{ rsvpLineDatas.contactName }}</p>
+                </li>
+                <li>
+                    <h6>电话</h6>
+                    <p>{{ rsvpLineDatas.contactTel }}</p>
+                </li>
+                <li>
+                    <h6>物流费用</h6>
+                    <p>{{ rsvpLineDatas.deliAmt }}</p>
+                </li>
+                <li>
+                    <h6>七公里外加收费</h6>
+                    <p>{{ rsvpLineDatas.extraDeliAmt }}</p>
+                </li>
+                <li>
+                    <h6>收货地址</h6>
+                    <p>{{ rsvpLineDatas.deliAddress }}</p>
+                </li>
+        
+            </ul>
+           <div id="qrcode" class="qr-code"></div>
+
+
+           <div class="footer">
+            <a class="btn" href="tel:400-110-3737">联系客服</a>
+            <a class="btn active" :href="orderDetail.fullELC">开发票</a>
+            <a class="btn" href="#" @click.prevent="goMiniProgram">再来一单</a>
+           </div>
+        </div>
+       
+    </div>
+
+    <script src="./js/utils.js"></script>
+    <script src="./js/detail.js"></script>
+</body>
+</html>

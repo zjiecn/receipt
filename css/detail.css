@@ -1,0 +1,114 @@
+@import './reset.css';
+#app {
+    width: 10rem;
+    background-color: #f7f7f7;
+    box-sizing: border-box;
+    padding: 0.4rem 0.4rem 2rem;
+}
+.detail {
+    background-color: #ffffff;
+    border-radius: 0.26rem 0.26rem 0.26rem 0.26rem;
+    padding: 0.4rem;
+}
+.header {
+    border-bottom: 0.026px solid #fafafa;
+    padding-bottom: 1.33rem;
+}
+.logo {
+    width: 2.93rem;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+.header .title {
+    font-size: 0.52rem;
+    text-align: center;
+    padding: 0.26rem 0 0.4rem;
+}
+.bar-code {
+    font-size: 0;
+    margin: 0 auto;
+    display: block;
+    height: 1.6rem;
+    
+}
+/* 订单信息 */
+.info {
+    border-top: 0.026px solid #e1e1e1;
+    border-bottom: 0.026px solid #e1e1e1; 
+    padding: 0.4rem 0;
+    color: #898989;
+    font-size: 0.4rem;
+
+}
+.info li {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 0.2rem;
+}
+.info li h6, .info li p {
+    font-size: 0.42rem;
+    font-weight: normal;
+}
+.info li h6.special {
+    font-size: 0.40rem;
+}
+.goods {
+    padding: 0.4rem 0;
+}
+.goods .title {
+    font-size: 0.42rem;
+    color: #000000;
+    font-weight: bold;
+    padding-top: 0.13rem;
+    /* padding: 0.26rem 0 0.4rem; */
+}
+.goods-detail {
+    padding-top: 0.266rem;
+    color: #898989;
+    font-size: 0.4rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.qr-code {
+    margin: 0 auto;
+    display: block;
+    display: flex;
+    justify-content: center;
+    padding: 0.4rem;
+}
+
+.qr-code img {
+    width: 4rem;
+    height: 4rem;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 0.4rem 0.4rem 0.6rem;
+    box-sizing: border-box;
+    background-color: #fff;
+    box-shadow: 0 0 10px #eee;
+}
+.footer .btn {
+    display: block;
+    line-height: 1;
+    background-color: transparent;
+    color: #000000;
+    font-size: 0.38rem;
+    padding: 0.26rem 0.333rem  0.2rem; 
+    margin-left: 0.26rem;
+    border-radius: 2rem; 
+    border: 0.026rem solid #f1f1f1;  
+}
+.footer .btn.active {
+    background-color: #784698;
+    border: none;
+    color: #fff;
+}
