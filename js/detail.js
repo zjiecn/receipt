@@ -19,7 +19,8 @@ var app = new Vue({
     methods: {
         init() {
             // 生成条形码
-            JsBarcode("#barcode", this.salesoId, {displayValue: false});
+            const source = JsBarcode("#barcode", this.salesoId, {displayValue: false});
+            console.log(source)
             // 生成二维码
             new QRCode(document.getElementById("qrcode"),  this.orderDetail.fullELC);
             wx.miniProgram.getEnv((res) => {
@@ -36,6 +37,9 @@ var app = new Vue({
                     });
                 }
             });
+        },
+        goReceipt() {
+            window.location.href = this.orderDetail.fullELC
         },
         goMiniProgram() {
             wx.miniProgram.reLaunch({
